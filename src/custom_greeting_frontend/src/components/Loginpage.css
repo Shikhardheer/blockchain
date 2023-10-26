@@ -1,15 +1,30 @@
+body{
+  background-image: url("https://blog.ipleaders.in/wp-content/uploads/2021/07/848365-rupee-istock-071519.jpg") ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .login-form{
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 400px;
-    width: 300px;
     margin: auto;
-    padding: 20px;
+    padding: 0px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
     margin-top: 50px;
+    border: none;
+  }
+  .form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 100px;
   }
   .username,.password{
     margin: 10px;

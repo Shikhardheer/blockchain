@@ -2,52 +2,36 @@ import React, { useState } from 'react';
 import { custom_greeting_backend } from '../../../declarations/custom_greeting_backend/index';
 import RegistrationForm from './RegistrationForm';
 import './Loginpage.css';
-const Loginpage = ({ onRegister }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const Loginpage = (args) => {
+  var [accountNumber,setAccountNumber] = useState();
+  var [password,setrpassword] = useState();
+  var verifyLogin = async ()=>{
+      var isVerified = await custom_greeting_backend.LoginUser(accountNumber, password);
+      isVerified =  parseInt(isVerified);
+      if(isVerified==1) args.Setdisplay(2);
+      else alert("Account Number or Password Wrong",isVerified);
+  }
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    //  login 
-    console.log('Username: ', username);
-    console.log('Password: ', password);
-    // authentication
-  };
+  var openRegisterationPage = async ()=>{
+    args.Setdisplay(1);
+  }
 
   return (
-    <div>
-    <form onSubmit={handleSubmit} className='login-form'>
-      <div>
-        <label htmlFor="text"></label>
+    <div className='login-form'>
+      <form  className="form">
+        <h1>Accounts</h1>
         <label className="username">
-          Username:
-          <input type="text" value={username} onChange={handleUsernameChange} />
+            CUSTOMER ID:
+          <input type="number" value={accountNumber} onChange={(e)=> setAccountNumber(e.target.value)} />
         </label>
-      </div>
-      <div>
         <label className="password">
-          Password:
-          <input type="password" value={password} onChange={handlePasswordChange} />
+          PASSWORD:
+          <input type="password" value={password} onChange={(e)=>setrpassword(e.target.value)} />
         </label>
-      </div>
-      <div>
-        <button type="submit">Login</button>
-      </div>
-      <div>
-        <p>Don't have an account? <span onClick={onRegister}>Register here</span></p>
-      </div>
-    </form>
-          <RegistrationForm></RegistrationForm>
-          </div>
-
+        <button type="button" onClick={verifyLogin}>Login</button>
+        <p>Don't have an account? <button onClick={openRegisterationPage}>Register here</button></p>
+      </form>
+    </div>
   );
 };
 
