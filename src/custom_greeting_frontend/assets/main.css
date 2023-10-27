@@ -6,7 +6,11 @@
     justify-content: center;
     border: none;
 }
+
+
 #app{
+    
+        
     width: 100vw;
     height: 100vh;
     display: flex;

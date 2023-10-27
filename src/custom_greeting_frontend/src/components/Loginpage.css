@@ -1,8 +1,9 @@
 body{
-  background-image: url("https://blog.ipleaders.in/wp-content/uploads/2021/07/848365-rupee-istock-071519.jpg") ;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url(../../assets/bg.jpeg);
+
 }
 .login-form{
   width: 100%;
